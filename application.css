@@ -13,12 +13,12 @@ td {
   background-color: white;
 }
 
-.fighter-1 {
+.fighter1 {
   background: url("images/ryu.png");
   background-size: 100% 100%;
 }
 
-.fighter-2 {
+.fighter2 {
   background: url("images/ken.png");
   background-size: 100% 100%;
 }

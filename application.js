@@ -1,3 +1,6 @@
+// tenley = new Player("Tenley");
+// jayda = new Player("Jayda");
+
 /*
 left arrow  37  up arrow  38  right arrow 39  down arrow  40
 a 65  w 87  d 68  s 83
@@ -16,15 +19,13 @@ function setUpBoard(rows, columns) {
       count++;
     }
   }
-  $("#0").attr("class","fighter-1");
+  $("#0").attr("class","fighter1");
   console.log(count);
-  $("#"+(count-1)).attr("class","fighter-2");
+  $("#"+(count-1)).attr("class","fighter2");
 }
 
-
-
 function eventListener(){
-  Player.turn.moves
+  Player.turn.moves;
 }
 
 function Player(name) {
@@ -32,33 +33,26 @@ function Player(name) {
   this.turn = new Turn();
 }
 
-// function Player(name){
-//   this.name = name;
-//   this.turn = new Turn();
-// }
-
-// tenley = new Player("Tenley");
-// jayda = new Player("Jayda");
-
+var getCurrentPosition = function(fighter){
+  return $('table').find('.' + fighter).attr('id');
+};
 
 var moveLeft = function(fighter){
-  // var $current_position = $('table').find('.'+ fighter);
-  // if ($current_position.prev().prop('nodeName') === "TD"){
-  //   $current_position.removeClass(fighter);
-  //   $current_position.prev().addClass(fighter);
-  // }
+  current_position = getCurrentPosition(fighter);
+  next_position = parseInt(current_position) - 1;
+  $('td#'+current_position).removeClass(fighter);
+  $('td#'+next_position).addClass(fighter);
 }
 
 var moveRight = function(fighter){
-  // var $current_position = $('table').find('.'+ fighter);
-  // if ($current_position.next().prop('nodeName') === "TD"){
-  //   $current_position.removeClass(fighter);
-  //   $current_position.next().addClass(fighter);
-  // }
+  current_position = getCurrentPosition(fighter);
+  next_position = parseInt(current_position) + 1;
+  $('td#'+current_position.toString()).removeClass(fighter);
+  $('td#'+next_position.toString()).addClass(fighter);
 }
 
 var laser = function(fighter){
-  console.log("pew")
+  current_position = getCurrentPosition();
 }
 
 // var move = function(fighter, direction){
@@ -74,13 +68,15 @@ var laser = function(fighter){
 
 var movelist = new Object()
 movelist['laser'] = laser
+movelist['moveRight'] = moveRight
+movelist['moveLeft'] = moveLeft
 
 var executePlayerOneMoves = function(num){
-  console.log(Turn.fighter1_moves[num]);
+  movelist[Turn.fighter1_moves[num]]("fighter1");
 };
 
 var executePlayerTwoMoves = function(num){
-  console.log(Turn.fighter2_moves[num]);
+  movelist[Turn.fighter2_moves[num]]("fighter2");
 };
 
 var checkForDeath = function(){
@@ -115,7 +111,7 @@ var moveParse = function(move){
 };
 
 $(document).ready(function() {
-  setUpBoard(8,8);
+  setUpBoard(6,6);
 
   $("button").on('click', function(button){
     var move = $(this).attr('class')
