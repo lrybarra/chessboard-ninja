@@ -1,5 +1,5 @@
 body {
-  background-image: url("images/sky.png")
+  background: url("images/sky.png")
 }
 
 .board, th, td {
@@ -21,4 +21,8 @@ td {
 .fighter2 {
   background: url("images/ken.png");
   background-size: 100% 100%;
+}
+
+.laser {
+  background-color: red;
 }

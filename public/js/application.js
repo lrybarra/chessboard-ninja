@@ -39,32 +39,65 @@ var getCurrentPosition = function(fighter){
 
 var moveLeft = function(fighter){
   current_position = getCurrentPosition(fighter);
-  next_position = parseInt(current_position) - 1;
-  $('td#'+current_position).removeClass(fighter);
-  $('td#'+next_position).addClass(fighter);
+  if (current_position != "0"){
+    next_position = parseInt(current_position) - 1;
+    $('td#'+current_position).removeClass(fighter);
+    $('td#'+next_position).addClass(fighter);
+  }
 }
 
 var moveRight = function(fighter){
   current_position = getCurrentPosition(fighter);
-  next_position = parseInt(current_position) + 1;
-  $('td#'+current_position.toString()).removeClass(fighter);
-  $('td#'+next_position.toString()).addClass(fighter);
+  if (current_position != "35"){
+    next_position = parseInt(current_position) + 1;
+    $('td#'+current_position.toString()).removeClass(fighter);
+    $('td#'+next_position.toString()).addClass(fighter);
+  }
 }
 
 var laser = function(fighter){
-  current_position = getCurrentPosition();
+  position = parseInt(getCurrentPosition(fighter));
+  for(var i = 0; i < (tableRows-1); i++){
+    if (fighter == 'fighter1'){
+      position = position + tableCols;
+    } else {
+      position = position - tableCols;
+    }
+    tdSelect(position).addClass('laser');
+  }
+};
+
+var clearLaser = function(){
+  $('td').removeClass('laser');
+};
+
+var tdSelect = function(position){
+  return $('td#'+position.toString())
 }
 
-// var move = function(fighter, direction){
-//   switch (direction){
-//     case 'left':
-//         moveLeft(fighter);
-//         break;
-//     case 'right':
-//         moveRight(fighter);
-//         break;
-//   }
-// };
+var tieGame = function(){
+  alert("TIE GAME");
+};
+var fighter1win = function(){
+  alert("PLAYER 1 WINS");
+};
+var fighter2win = function(){
+  alert("PLAYER 2 WINS");
+};
+
+var checkForDeath = function(){
+  var fighter1_position = parseInt(getCurrentPosition("fighter1"));
+  var fighter2_position = parseInt(getCurrentPosition("fighter2"));
+  if (tdSelect(fighter1_position).hasClass('laser') && tdSelect(fighter2_position).hasClass('laser'))
+    {tieGame();
+      return "yo"}
+  if (tdSelect(fighter1_position).hasClass('laser'))
+    {fighter2win();
+    return "yo"}
+  if (tdSelect(fighter2_position).hasClass('laser'))
+    {fighter1win();
+    return "yo"}
+};
 
 var movelist = new Object()
 movelist['laser'] = laser
@@ -79,16 +112,21 @@ var executePlayerTwoMoves = function(num){
   movelist[Turn.fighter2_moves[num]]("fighter2");
 };
 
-var checkForDeath = function(){
-  console.log("CHECK FOR DEATH!");
-};
+function pausecomp(millis)
+ {
+  var date = new Date();
+  var curDate = null;
+  do { curDate = new Date(); }
+  while(curDate-date < millis);
+}
 
 var executer = function(){
   console.log("FIGHT!");
   for(var i=0; i<5; i++){
+    clearLaser();
     executePlayerOneMoves(i);
     executePlayerTwoMoves(i);
-    checkForDeath();
+    if (checkForDeath()==="yo"){break;};
   }
 };
 
@@ -110,8 +148,12 @@ var moveParse = function(move){
   };
 };
 
+var tableRows = 6;
+var tableCols = 6;
+
 $(document).ready(function() {
-  setUpBoard(6,6);
+
+  setUpBoard(tableRows, tableCols);
 
   $("button").on('click', function(button){
     var move = $(this).attr('class')
