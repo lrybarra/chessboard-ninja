@@ -11,8 +11,25 @@ var moveLeft = function(fighter){
   }
 }
 
+var moveRight = function(fighter){
+  var $current_position = $('table').find('.'+ fighter);
+  if ($current_position.next().prop('nodeName') == "TD"){
+    $current_position.removeClass(fighter);
+    $current_position.next().addClass(fighter);
+  }
+}
+
 var move = function(fighter, direction){
-  moveLeft(fighter);
+  switch (direction){
+    case 'left':
+        moveLeft(fighter);
+        break;
+    case 'right':
+        moveRight(fighter);
+        break;
+  }
+
+
 }
 
 $(document).ready(function() {
@@ -22,7 +39,7 @@ $(document).ready(function() {
     } else if (e.which === 38) {
 
     } else if (e.which === 39) {
-
+      move('figher-1', 'right');
     } else if (e.which === 40) {
 
     }
