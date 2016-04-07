@@ -22,3 +22,7 @@ td {
   background: url("images/ken.png");
   background-size: 100% 100%;
 }
+
+.laser {
+  background-color: red;
+}
