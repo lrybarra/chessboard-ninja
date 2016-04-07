@@ -8,9 +8,11 @@ td {
 }
 
 .fighter-1 {
-  background-color: red;
+  background: url("images/ryu.png");
+  background-size: cover;
 }
 
 .fighter-2 {
-  background-color: blue;
+  background: url("images/jayda.png");
+  background-size: 100%;
 }
