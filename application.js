@@ -3,9 +3,30 @@ left arrow  37  up arrow  38  right arrow 39  down arrow  40
 a 65  w 87  d 68  s 83
 */
 
+function eventListener(){
+  Player.turn.moves
+}
+
+function Player(name) {
+  this.name = name;
+  this.turn = new Turn();
+}
+
+function Turn() {
+   this.moves = [];
+};
+
+Turn.prototype.done = function () {
+  this.moves.length === 3;
+}
+
+tenley = new Player("Tenley");
+jayda = new Player("Jayda");
+
+
 var moveLeft = function(fighter){
   var $current_position = $('table').find('.'+ fighter);
-  if ($current_position.prev().prop('nodeName') == "TD"){
+  if ($current_position.prev().prop('nodeName') === "TD"){
     $current_position.removeClass(fighter);
     $current_position.prev().addClass(fighter);
   }
@@ -13,7 +34,7 @@ var moveLeft = function(fighter){
 
 var moveRight = function(fighter){
   var $current_position = $('table').find('.'+ fighter);
-  if ($current_position.next().prop('nodeName') == "TD"){
+  if ($current_position.next().prop('nodeName') === "TD"){
     $current_position.removeClass(fighter);
     $current_position.next().addClass(fighter);
   }
@@ -33,15 +54,9 @@ var move = function(fighter, direction){
 }
 
 $(document).ready(function() {
-  $(document).on('keyup', function(e){
-    if (e.which === 37){
-      move('fighter-1', 'left');
-    } else if (e.which === 38) {
-
-    } else if (e.which === 39) {
-      move('figher-1', 'right');
-    } else if (e.which === 40) {
-
+  $(button).on('click', function(button){
+    Move = $this.attr('class')
+    console.log('class')
     }
 
   });
