@@ -1,0 +1,16 @@
+table, th, td {
+   border: 1px solid black;
+}
+
+td {
+  width: 60px;
+  height: 60px;
+}
+
+.fighter-1 {
+  background-color: red;
+}
+
+.fighter-2 {
+  background-color: blue;
+}
