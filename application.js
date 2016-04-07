@@ -3,6 +3,26 @@ left arrow  37  up arrow  38  right arrow 39  down arrow  40
 a 65  w 87  d 68  s 83
 */
 
+function setUpBoard(rows, columns) {
+
+  var container = $(".container");
+  var table = "<table class='board'></table>";
+  container.append(table);
+  var count = 0;
+  for (var r = 0; r< rows; r++) {
+    $(".board").append("<tr id='row"+r+"'></tr>");
+    for (var c = 0; c < columns; c++) {
+      $("#row"+r).append("<td id='"+count+"'></td>");
+      count++;
+    }
+  }
+  $("#0").attr("class","fighter-1");
+  console.log(count);
+  $("#"+(count-1)).attr("class","fighter-2");
+}
+
+
+
 function eventListener(){
   Player.turn.moves
 }
@@ -54,10 +74,12 @@ var move = function(fighter, direction){
 }
 
 $(document).ready(function() {
-  $(button).on('click', function(button){
+  $("button").on('click', function(button){
     Move = $this.attr('class')
     console.log('class')
-    }
+    })
+
+  setUpBoard(8,8);
 
   });
-})
+
