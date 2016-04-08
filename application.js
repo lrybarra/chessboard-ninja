@@ -141,10 +141,19 @@ var Turn = {
 var moveParse = function(move){
   var fighter_move = move.split("-");
   if (fighter_move[0] === "fighter1"){
-    Turn.fighter1_moves.push(fighter_move[1])
+    if (Turn.fighter1_moves.length < 6){
+      Turn.fighter1_moves.push(fighter_move[1])
+    } else
+    {
+      alert("NO MO MOVES YO!");
+    };
   };
   if (fighter_move[0] === "fighter2"){
-    Turn.fighter2_moves.push(fighter_move[1])
+    if (Turn.fighter1_moves.length < 6){
+      Turn.fighter2_moves.push(fighter_move[1])
+    } else {
+      alert("NO MO MOVES YO!");
+    };
   };
 };
 
