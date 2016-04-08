@@ -11,7 +11,7 @@ post '/users/new' do
     redirect '/games'
   else
     @errors = @user.errors.full_messages
-    erb :register
+    erb :'users/show'
   end
 end
 

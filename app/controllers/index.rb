@@ -9,3 +9,7 @@ get '/login' do
   end
 end
 
+get '/session' do
+  session.inspect
+end
+
