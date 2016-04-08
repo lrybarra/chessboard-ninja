@@ -1,7 +1,7 @@
 
 <script src="/js/application.js"></script>
 <table class='player-1-moves'>
-  <h3>player 1</h3>
+  <h3>Player 1</h3>
   <tr><button type="button" class="fighter1-moveUp">Move Up</button></tr>
   <tr><button type="button" class = "fighter1-moveLeft">Move Left</button></tr>
   <tr><button type="button" class = "fighter1-moveRight">Move Right</button></tr>
@@ -12,7 +12,7 @@
 </table>
 
 <table class='player-2-moves'>
-  <h3>player 2</h3>
+  <h3>Player 2</h3>
   <tr><button type="button" class = "fighter2-moveUp">Move Up</button></tr>
   <tr><button type="button" class = "fighter2-moveLeft">Move Left</button></tr>
   <tr><button type="button" class = "fighter2-moveRight">Move Right</button></tr>
@@ -21,18 +21,19 @@
   <tr><button type="button" class = "fighter2-laser">Laser</button></tr>
   <tr><button type="button" class = "fighter2-bomb">Bomb</button></tr>
 </table>
+<div id="Turn-Log">
+  <table class='execute-next-turn'>
+    <h3>Next Turn</h3>
+    <tr><button type="button" class="next-turn">Next Turn</button></tr>
+  </table>
 
-<table class='execute-next-turn'>
-  <h3>Next Turn</h3>
-  <tr><button type="button" class="next-turn">Next Turn</button></tr>
-</table>
+  <table class='player-1-combat-log'>
+    <h3>Player 1 Combat Log</h3>
+    <tr><td id="p1c0"></td><td id="p1c1"></td><td id="p1c2"></td><td id="p1c3"></td><td id="p1c4"></td></tr>
+  </table>
 
-<table class='player-1-combat-log'>
-  <h3>Player 1 Combat Log</h3>
-  <tr><td id="p1c0"></td><td id="p1c1"></td><td id="p1c2"></td><td id="p1c3"></td><td id="p1c4"></td></tr>
-</table>
-
-<table class='player-2-combat-log'>
-  <h3>Player 2 Combat Log</h3>
-  <tr><td id="p2c0"></td><td id="p2c1"></td><td id="p2c2"></td><td id="p2c3"></td><td id="p2c4"></td></tr>
-</table>
+  <table class='player-2-combat-log'>
+    <h3>Player 2 Combat Log</h3>
+    <tr><td id="p2c0"></td><td id="p2c1"></td><td id="p2c2"></td><td id="p2c3"></td><td id="p2c4"></td></tr>
+  </table>
+</div>
