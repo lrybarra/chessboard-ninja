@@ -161,6 +161,7 @@ $(document).ready(function() {
 
     if(Turn.done()){
       executer();
+      // clear turns
     }
   });
 });
