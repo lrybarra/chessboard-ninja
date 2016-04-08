@@ -19,6 +19,7 @@ td {
 }
 
 .fighter2 {
+  /*background: url("images/jayda.gif");*/
   background: url("images/ken.png");
   background-size: 100% 100%;
 }
