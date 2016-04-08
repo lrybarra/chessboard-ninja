@@ -37,6 +37,10 @@ var getCurrentPosition = function(fighter){
   return $('table').find('.' + fighter).attr('id');
 };
 
+var noMove = function(fighter){
+  // nothin yo
+}
+
 var moveRight = function(fighter){
   current_position = getCurrentPosition(fighter);
   if (current_position != "35"){
@@ -96,19 +100,48 @@ var laser = function(fighter){
   }
 };
 
-// var bomb = function(fighter){
-//   if (fighter == 'fighter1'){
-//     position = parseInt(getCurrentPosition('fighter2'));
-//   } else {
+var staff = function(fighter){
+  position = parseInt(getCurrentPosition(fighter));
+  if (fighter == 'fighter1'){
+   for(var i = 0; i < 36; i++){
+    if (Math.floor(i/6-1) === Math.floor(position/6)) {
+      tdSelect(i).addClass('bomb').addClass(fighter+'hitbox');
+      }
+    }
+  } else {
+    for(var i = 0; i < 36; i++){
+    if (
+      Math.floor(i/6+1) === Math.floor(position/6)) {
+      tdSelect(i).addClass('bomb').addClass(fighter+'hitbox');
+      }
+    }
+  }
+  tdSelect(position).addClass('laser').addClass(fighter+'hitbox');
+};
 
-//   }
-
-//   for(var i = 0; i < (tableCols-1); i++){
-//   }
-// };
+var bomb = function(fighter){
+  if (fighter == 'fighter1'){
+    // 0 29 31
+    position = parseInt(getCurrentPosition('fighter1'));
+    bomb_pos1 = (position + (tableCols * (tableRows-1))) + 1;
+    bomb_pos2 = (position + (tableCols * (tableRows-1))) - 1;
+  } else {
+    position = parseInt(getCurrentPosition('fighter2'));
+    bomb_pos1 = (position - (tableCols * (tableRows-1))) + 1;
+    bomb_pos2 = (position - (tableCols * (tableRows-1))) - 1;
+  }
+  tdSelect(bomb_pos1).addClass('bomb').addClass(fighter+'hitbox');
+  tdSelect(bomb_pos2).addClass('bomb').addClass(fighter+'hitbox');
+};
 
 var clearLaser = function(){
   $('td').removeClass('laser');
+  $('td').removeClass('fighter1hitbox');
+  $('td').removeClass('fighter2hitbox');
+};
+
+var clearBomb = function(){
+  $('td').removeClass('bomb');
   $('td').removeClass('fighter1hitbox');
   $('td').removeClass('fighter2hitbox');
 };
@@ -143,11 +176,14 @@ var checkForDeath = function(){
 
 var movelist = new Object()
 movelist['laser'] = laser
+movelist['bomb'] = bomb
 movelist['moveRight'] = moveRight
 movelist['moveLeft'] = moveLeft
 movelist['moveUp'] = moveUp
 movelist['dashRight'] = dashRight
 movelist['dashLeft'] = dashLeft
+movelist['noMove'] = noMove
+movelist['staff'] = staff
 
 var executePlayerOneMoves = function(num){
   var moveName = Turn.fighter1_moves[num]
@@ -193,6 +229,7 @@ var ajaxPause = function(){
 var executer = function(i){
   console.log("FIGHT!");
   clearLaser();
+  clearBomb();
   makeMoves(i);
 
     if (checkForDeath()==="yo"){
@@ -263,6 +300,7 @@ $(document).ready(function() {
     if (i > 4){
       Turn.fighter1_moves = [];
       Turn.fighter2_moves = [];
+      alert("GAME OVER!");
     } else {
       addToCombatLog(Turn.fighter1_moves[i], Turn.fighter2_moves[i], i);
       executer(i);
