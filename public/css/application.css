@@ -19,10 +19,27 @@ td {
 }
 
 .fighter2 {
+  /*background: url("images/jayda.gif");*/
   background: url("images/ken.png");
   background-size: 100% 100%;
 }
 
 .laser {
   background-color: red;
+}
+
+.fighter1hitbox {
+
+}
+
+.fighter2hitbox {
+
+}
+
+.bomb {
+  background-color: orange;
+}
+
+.execute-next-turn {
+  visibility: hidden;
 }
