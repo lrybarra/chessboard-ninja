@@ -27,3 +27,19 @@ td {
 .laser {
   background-color: red;
 }
+
+.fighter1hitbox {
+
+}
+
+.fighter2hitbox {
+
+}
+
+.bomb {
+  background-color: orange;
+}
+
+.execute-next-turn {
+  visibility: hidden;
+}
