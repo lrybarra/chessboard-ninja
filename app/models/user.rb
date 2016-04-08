@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   validates :hashed_password, presence: true
   validate :check_password
 
-  # has_many :channels, through: :subscriptions
+  has_many :matches
+  has_many :games, through: :matches
 
   include BCrypt
 

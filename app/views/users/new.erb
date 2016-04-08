@@ -5,8 +5,16 @@
   <form action="/users/new" method="POST">
     <input type="text" name="user[username]" placeholder="username">
     <input type="text" name="user[email]" placeholder="EMAIL">
-    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="user[password]" placeholder="Password">
 
     <input type="submit" value="Register Now!">
   </form>
+
+  <% if @errors %>
+    <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
