@@ -5,6 +5,7 @@ body {
 .board, th, td {
    float: center;
    border: 1px solid black;
+
 }
 
 td {
@@ -16,12 +17,39 @@ td {
 .fighter1 {
   background: url("images/ryu.png");
   background-size: 100% 100%;
+  -webkit-animation: swing 1s ease;
+        animation: swing 1s ease;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
 }
 
 .fighter2 {
-  /*background: url("images/jayda.gif");*/
-  background: url("images/ken.png");
+  background-image: url("images/jayda.gif");
+  /*background: url("images/ken.png");*/
   background-size: 100% 100%;
+  -webkit-animation: swing 1s ease;
+        animation: swing 1s ease;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+}
+
+.fighter1:hover {
+  background: url("images/ryu.png");
+  background-size: 100% 100%;
+  -webkit-animation: swing 1s ease;
+        animation: swing 1s ease;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+}
+
+.fighter2:hover {
+  background-image: url("images/jayda.gif");
+  /*background: url("images/ken.png");*/
+  background-size: 100% 100%;
+  -webkit-animation: swing 1s ease;
+        animation: swing 1s ease;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
 }
 
 .laser {
@@ -42,4 +70,100 @@ td {
 
 .execute-next-turn {
   visibility: hidden;
+}
+
+#Turn-Log {
+  position: relative;
+  left: 500px;
+  bottom: 600px;
+}
+
+button {
+  background-color: #025274;
+  color: white;
+}
+
+button:hover {
+  -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+  background-color: orange;
+  color: black;
+  border-radius: 25%;
+  box-shadow:
+                1px 1px #53a7ea,
+                2px 2px #53a7ea,
+                3px 3px #53a7ea;
+        -webkit-animation: swing 1s ease;
+        animation: swing 1s ease;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+
+}
+
+@-webkit-keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+       transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+@keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
 }
