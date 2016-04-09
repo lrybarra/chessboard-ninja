@@ -53,7 +53,13 @@ td {
 }
 
 .laser {
-  background-color: red;
+  background: url("images/hadouken.png");
+  background-size: 100% 100%;
+}
+
+.laser2 {
+  background: url("images/hadouken2.png");
+  background-size: 100% 100%;
 }
 
 .fighter1hitbox {
@@ -65,7 +71,13 @@ td {
 }
 
 .bomb {
-  background-color: orange;
+  background: url("images/bomb.png");
+  background-size: 100% 100%;
+}
+
+.staff {
+  background: url("images/staff.png");
+  background-size: 100% 100%;
 }
 
 .execute-next-turn {
